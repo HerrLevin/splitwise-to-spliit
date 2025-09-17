@@ -1,0 +1,21 @@
+{
+  "name": "herrlevin/splitwise-to-spliit-importer",
+  "description": "A tool to convert Splitwise export data to Spliit.",
+  "type": "project",
+  "require": {
+    "php": ">=8.3",
+    "ext-json": "*",
+    "league/csv": "^9.7",
+    "symfony/console": "^6.0",
+    "guzzle/guzzle": "^3.8"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
+}
