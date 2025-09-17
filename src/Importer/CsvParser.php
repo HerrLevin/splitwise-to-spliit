@@ -15,6 +15,14 @@ class CsvParser
         $this->parse();
     }
 
+    public function getExepnseCount(): int
+    {
+        if (empty($this->data)) {
+            $this->parse();
+        }
+        return count($this->data);
+    }
+
     public function parse(): array
     {
         if (!empty($this->data)) {
@@ -31,7 +39,7 @@ class CsvParser
             while (($row = fgetcsv($handle, 1000, ',', '"', '\\')) !== false) {
                 if (!$header && $row[0] !== null && !str_contains($row[0], ':')) {
                     $header = $row;
-                } elseif (!empty($header) && count($row) === count($header)) {
+                } elseif (!empty($header) && count($row) === count($header) && !str_contains($row[1], 'Total balance')) {
                     $this->data[] = array_combine($header, $row);
                 }
             }
